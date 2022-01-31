@@ -4,11 +4,18 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import HomePage from '../pages/homePage'
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import store from '../store/store';
+import App from '../app';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <HomePage />,
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+     </Provider>,
     document.body.appendChild(document.createElement('div')),
   )
 })

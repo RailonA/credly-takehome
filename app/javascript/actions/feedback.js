@@ -1,4 +1,7 @@
-import { SEND_FEEDBACK, SET_FEEDBACK_INACTIVE } from '../constants/actions';
+import { 
+  SEND_FEEDBACK, 
+  SET_FEEDBACK_INACTIVE
+} from '../constants/actions';
 
 export const sendFeedbackAction = (data) => ({
   type: SEND_FEEDBACK,
