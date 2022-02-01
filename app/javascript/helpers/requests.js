@@ -23,7 +23,8 @@ export  const requestMarvelsInfo = async (dispatch) => {
     try {
       dispatch(getMarvelsRequest());
       const response = await axios.get(`${requests.marvels}`);
-      dispatch(getMarvelsSuccess(response.data));
+      dispatch(getMarvelsSuccess(response.data.data.results));
+      // console.log(response.data.data.results)
     } catch (error) {
       dispatch(getMarvelsFailure);
       handleError(dispatch, 'marvel', error);
