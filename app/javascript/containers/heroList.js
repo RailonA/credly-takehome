@@ -9,16 +9,6 @@ const HeroList = () => {
   
   const dispatch = useDispatch();
 
-  // const renderHeros = heroData.map((results)=>(
-  //   <div>
-  //     {
-  //     results.map((hero)=> (
-  //       <p>{hero.id}</p>
-  //     ))
-  //     }
-  //   </div>
-  // ));
-
   useEffect(() => {
       dispatch(requestMarvelsInfo);
   }, [dispatch]);
@@ -27,14 +17,16 @@ const HeroList = () => {
 
 <div>
     <div>
-      <p>Prints the hero list</p>
+      <p>Hero Card</p>
       {/* <p>{renderHeros}</p> */}
     </div>
     <div>
       {
       heroData.map((hero) => (
         <div key={hero.id} className="d-flex col-sm-4 m-4">
+          <img src={hero.thumbnail.path+'/portrait_xlarge.jpg'}/>
           <p>{ hero.name }</p>
+          <p>{ hero.description }</p>
         </div>
       ))
       }
