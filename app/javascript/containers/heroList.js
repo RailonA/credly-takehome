@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestMarvelsInfo } from '../helpers/requests';
+import { requestMarvelsInfo, requestCredlyInfo } from '../helpers/requests';
 
 const HeroList = () => {
   const heroData = useSelector((state) => state.marvel.marvelsCollection);
-  
-  console.log(heroData);
+  const credlyData = useSelector((state) => state.credly.requestCredlyInfo);
+  console.log(credlyData);
   
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(requestMarvelsInfo);
+    //  dispatch(requestMarvelsInfo);
+    requestCredlyInfo(dispatch);
+    requestMarvelsInfo(dispatch);
   }, [dispatch]);
 
   return (
@@ -18,15 +20,13 @@ const HeroList = () => {
 <div>
     <div>
       <p>Hero Card</p>
-      {/* <p>{renderHeros}</p> */}
     </div>
     <div>
       {
       heroData.map((hero) => (
         <div key={hero.id} className="d-flex col-sm-4 m-4">
-          <img src={hero.thumbnail.path+'/portrait_xlarge.jpg'}/>
+          <img src={hero.thumbnail.path+'/portrait_incredible.jpg'}/>
           <p>{ hero.name }</p>
-          <p>{ hero.description }</p>
         </div>
       ))
       }
