@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_224704) do
+ActiveRecord::Schema.define(version: 2022_02_08_141538) do
 
   create_table "heros", force: :cascade do |t|
     t.string "recipient_email", null: false
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 2022_02_07_224704) do
     t.string "name", null: false
     t.integer "heroid", null: false
     t.string "description", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.string "vanity_url"
+    t.string "vanity_slug"
+    t.boolean "verified"
+    t.boolean "viewable"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
