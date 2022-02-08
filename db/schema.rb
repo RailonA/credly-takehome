@@ -33,11 +33,30 @@ ActiveRecord::Schema.define(version: 2022_10_09_144835) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-# Could not dump table "badge_templates" because of following StandardError
-#   Unknown type 'uuid' for column 'id'
+  create_table "badge_templates", force: :cascade do |t|
+    t.string "name"
+    t.boolean "allow_duplicates"
+    t.string "description"
+    t.string "state"
+    t.boolean "public"
+    t.string "vanity_slug"
+    t.string "image_url"
+    t.string "badge_url"
+    t.integer "deployed"
+    t.string "organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
-# Could not dump table "heroes" because of following StandardError
-#   Unknown type 'uuid' for column 'id'
+  create_table "heroes", force: :cascade do |t|
+    t.string "recipient_email", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "badge_template_id", null: false
+    t.datetime "issued_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "kv_group_evidences", force: :cascade do |t|
     t.string "hero_id", null: false
@@ -51,8 +70,16 @@ ActiveRecord::Schema.define(version: 2022_10_09_144835) do
     t.string "url"
   end
 
-# Could not dump table "organizations" because of following StandardError
-#   Unknown type 'uuid' for column 'id'
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.string "vanity_url"
+    t.string "vanity_slug"
+    t.boolean "verified"
+    t.boolean "viewable"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "plain_text_evidences", force: :cascade do |t|
     t.string "hero_id", null: false

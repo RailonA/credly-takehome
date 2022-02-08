@@ -1,6 +1,6 @@
 class CreateOrganizations < ActiveRecord::Migration[6.1]
   def change
-    create_table :organizations, id: :uuid, default: 'gen_random_uuid()' do |t|
+    create_table :organizations do |t|
       t.string :name
       t.string :image_url
       t.string :vanity_url
