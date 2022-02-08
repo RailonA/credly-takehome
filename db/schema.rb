@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_141538) do
+ActiveRecord::Schema.define(version: 2022_02_08_142618) do
+
+  create_table "badge_templates", force: :cascade do |t|
+    t.string "name"
+    t.boolean "allow_duplicates"
+    t.string "description"
+    t.string "state"
+    t.boolean "public"
+    t.string "vanity_slug"
+    t.string "image_url"
+    t.string "badge_url"
+    t.integer "deployed"
+    t.string "organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "heros", force: :cascade do |t|
     t.string "recipient_email", null: false
