@@ -1,6 +1,6 @@
 class CreateHeros < ActiveRecord::Migration[6.1]
   def change
-    create_table :heros do |t|
+    create_table :heroes, id: :uuid, default: 'gen_random_uuid()' do |t|
       t.string :recipient_email,  null: false
       t.string :first_name,       null: false
       t.string :last_name,        null: false

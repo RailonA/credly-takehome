@@ -10,50 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_142618) do
+ActiveRecord::Schema.define(version: 2022_10_09_144835) do
 
-  create_table "badge_templates", force: :cascade do |t|
-    t.string "name"
-    t.boolean "allow_duplicates"
-    t.string "description"
-    t.string "state"
-    t.boolean "public"
-    t.string "vanity_slug"
-    t.string "image_url"
-    t.string "badge_url"
-    t.integer "deployed"
-    t.string "organization_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "heros", force: :cascade do |t|
-    t.string "recipient_email", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "badge_template_id", null: false
-    t.datetime "issued_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "marvels", force: :cascade do |t|
+  create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "heroid", null: false
-    t.string "description", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "organizations", force: :cascade do |t|
-    t.string "name"
-    t.string "image_url"
-    t.string "vanity_url"
-    t.string "vanity_slug"
-    t.boolean "verified"
-    t.boolean "viewable"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+# Could not dump table "badge_templates" because of following StandardError
+#   Unknown type 'uuid' for column 'id'
+
+# Could not dump table "heroes" because of following StandardError
+#   Unknown type 'uuid' for column 'id'
+
+  create_table "kv_group_evidences", force: :cascade do |t|
+    t.string "hero_id", null: false
+    t.string "name", null: false
+  end
+
+  create_table "kv_pair_evidences", force: :cascade do |t|
+    t.string "kv_group_evidence_id", null: false
+    t.string "key", null: false
+    t.string "value", null: false
+    t.string "url"
+  end
+
+# Could not dump table "organizations" because of following StandardError
+#   Unknown type 'uuid' for column 'id'
+
+  create_table "plain_text_evidences", force: :cascade do |t|
+    t.string "hero_id", null: false
+    t.string "title", null: false
+    t.string "description"
+  end
+
+  create_table "url_evidences", force: :cascade do |t|
+    t.string "hero_id", null: false
+    t.string "name", null: false
+    t.string "value", null: false
+    t.string "description"
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

@@ -35,4 +35,42 @@
     <%= form.text_field :issued_at, :value => DateTime.now  %>
   </div>
   
+    <ul>
+    <p>Key Value Evidence</p>
+    <%= fields_for :kv_group_evidences, @hero.kv_group_evidence do |kv_grp_o| %>
+      <%= kv_grp_o.text_field :name %>
+    <% end %>
+    <li>
+    <%= fields_for :kv_pair_evidence, @hero.kv_pair_evidence do |kv_pair_o| %>
+      <%= kv_pair_o.text_field :key %>
+      <%= kv_pair_o.text_field :value %>
+      <%= kv_pair_o.text_field :url %>
+    <% end %>
+    </li>
+  </ul>
+
+  <ul>
+    <p>Plain Text Evidence</p>
+    <%= fields_for :plain_text_evidences, @hero.plain_text_evidence do |pt_ev_o| %>
+      <li>
+        <%= pt_ev_o.text_field :title %>
+        <%= pt_ev_o.text_field :description %>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul>
+    <p>Url Evidence</p>
+    <%= fields_for :url_evidences, @hero.url_evidence do |url_o| %>
+      <li>
+        <%= url_o.text_field :value %>
+        <%= url_o.text_field :name %>
+        <%= url_o.text_field :description %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>

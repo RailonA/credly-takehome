@@ -4,7 +4,7 @@ class HeroesController < ApplicationController
   # GET /heroes
   # GET /heroes.json
   def index
-    @heroes = Hero.all
+    @heroes = Heroes.all
   end
 
   # GET /heroes/1
