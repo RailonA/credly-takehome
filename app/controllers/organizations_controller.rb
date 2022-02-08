@@ -4,6 +4,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations or /organizations.json
   def index
     @organizations = Organization.all
+    @templates = BadgeTemplate.all
   end
 
   # GET /organizations/1 or /organizations/1.json
