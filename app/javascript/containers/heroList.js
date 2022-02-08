@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestMarvelsInfo, requestCredlyInfo } from '../helpers/requests';
+import { requestMarvelsInfo } from '../helpers/requests';
 
 const HeroList = () => {
   const heroData = useSelector((state) => state.marvel.marvelsCollection);
-  const credlyData = useSelector((state) => state.credly.requestCredlyInfo);
-  console.log(credlyData);
   
   const dispatch = useDispatch();
 
   useEffect(() => {
     //  dispatch(requestMarvelsInfo);
-    requestCredlyInfo(dispatch);
     requestMarvelsInfo(dispatch);
   }, [dispatch]);
 

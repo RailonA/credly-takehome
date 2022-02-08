@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_131528) do
+ActiveRecord::Schema.define(version: 2022_02_07_224704) do
+
+  create_table "heros", force: :cascade do |t|
+    t.string "recipient_email", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "badge_template_id", null: false
+    t.datetime "issued_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "marvels", force: :cascade do |t|
     t.string "name", null: false
