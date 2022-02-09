@@ -23,8 +23,6 @@ module NetRelated
       badge_template_h = JSON.parse(response.body)
     end
  
-    p "#{badge_template}"
-
     def issued_badges
       issued_badges_url_string = "#{BASE_URL}/#{API_VERSION}/organizations/#{@org_id}/badges"
       response = RestClient::Request.execute(method: :get, url: issued_badges_url_string, user: USER_TOKEN, password: '')
