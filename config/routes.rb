@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   #   end
   # end
   
-  resources :heroes, only: %i(index show new create edit update destroy)
+  resources :heroes, only: %i(index show new create edit update destroy )
   resources :organizations, only: %i(index show new create edit update destroy)
+
+  get 'heroes', to: 'heroes#new'
+  post 'heroes', to: 'heroes#create'
+
   root 'organizations#index'
 
 end
