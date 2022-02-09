@@ -34,4 +34,37 @@
 
 <br>
 
-<%= link_to 'New Organization', new_organization_path %>
+<%#= link_to 'New Organization', new_organization_path %>
+
+<h2>Badge Templates</h2>
+<table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>State</th>
+      <th>Public</th>
+      <th>Vanity Slug</th>
+      <th>URL</th>
+      <th># deployed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @templates.each do |template| %>
+      <tr>
+        <td><%= image_tag template.image_url, size: "100x100" %></td>
+        <td><%= template.id %></td>
+        <td><%= template.name %></td>
+        <td><%= template.description %></td>
+        <td><%= template.state %></td>
+        <td><%= template.public %></td>
+        <td><%= template.vanity_slug %></td>
+        <td><%= template.badge_url %></td>
+        <td><%= template.deployed %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "View Hero Candidates",  heroes_path %>

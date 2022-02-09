@@ -14,7 +14,7 @@ class HeroesController < ApplicationController
 
   # GET /heroes/new
   def new
-    @hero = Hero.new
+    @hero = Heroes.new
   end
 
   # GET /heroes/1/edit
@@ -24,7 +24,7 @@ class HeroesController < ApplicationController
   # POST /heroes
   # POST /heroes.json
   def create
-    @hero = Hero.new(hero_params)
+    @hero = Heroes.new(heroes_params)
 
     respond_to do |format|
       if @hero.save
@@ -50,7 +50,7 @@ class HeroesController < ApplicationController
       if url_evidence_params['value'] && @url_evidence
         @url_evidence.update(url_evidence_params)
       end
-      if @hero.update(hero_params)
+      if @hero.update(heroes_params)
         format.html { redirect_to @hero, notice: 'Hero was successfully updated.' }
         format.json { render :show, status: :ok, location: @hero }
       else
@@ -100,7 +100,7 @@ class HeroesController < ApplicationController
       params.require(:url_evidences).permit(:value, :name, :description)
     end
     # Never trust parameters from the scary internet, only allow the white list through.
-    def hero_params
-      params.require(:hero).permit(:recipient_email, :first_name, :last_name, :badge_template_id, :issued_at, :issuer_earner_id, :locale, :suppress_badge_notification_email, :expires_at, :country_name, :state_or_province)
+    def heroes_params
+      params.require(:heroes).permit(:recipient_email, :first_name, :last_name, :badge_template_id, :issued_at)
     end
 end

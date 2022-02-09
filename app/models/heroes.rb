@@ -9,8 +9,8 @@ class Heroes < ApplicationRecord
     KvGroupEvidence.where(hero_id: id)&.first
   end
 
-  def hv_pair_evidence
-    kv_g_id = hv_group_evidence&.id
+  def kv_pair_evidence
+    kv_g_id = kv_group_evidence&.id
     KvPairEvidence.where(kv_group_evidence_id: kv_g_id).first
   end
 
